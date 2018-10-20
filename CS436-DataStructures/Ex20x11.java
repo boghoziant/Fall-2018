@@ -20,27 +20,53 @@ public class Ex20x11 {
 		while(readFile.hasNext()){
 		
 			
-			s.(readFile.next());
+			s = readFile.next();
 						
 		}
 		
 		StringTokenizer tokens = new StringTokenizer(s, "[](){}", true);
 		
-		while (tokens.hasMoreTokens()) {
-		     String token = tokens.nextToken().trim();
-		     if (token.length() == 0) {
+		while (tokens.hasMoreTokens()) {		//loop will run as long as tokens has brackets left
+		     String token = tokens.nextToken().trim();	//takes the next available token, trims it, and sets it to token
+		     if (token.length() == 0) {			//if there isn't a token then go to next iteration
 		              continue;
 		     }
-		     else if (token.charAt(0) == '[') {
+		     else if (token.charAt(0) == '[') {		//checks if it's a opening bracket
+		    	 
+		    	 oneStack.push(token.charAt(0));
 		    	 
 		     }
-		    
-		
-		
-		userInput.close();
-	
+		     else if (token.charAt(0) == '(') {
+		    	 
+		    	 oneStack.push(token.charAt(0));
+		    	 
+		     }
+		     else if (token.charAt(0) == '{') {
+		    	 
+		    	 oneStack.push(token.charAt(0));		    	 
+		     }
+		     else if (token.charAt(0) == '}' && oneStack.peek() == '{') {
+		    	 
+		    	 oneStack.pop();	    	 
+		     }
+		     else if (token.charAt(0) == ')' && oneStack.peek() == '(') {
+		    	 
+		    	 oneStack.pop();	    	 
+		     }
+		     else if (token.charAt(0) == ']' && oneStack.peek() == '[') {
+		    	 
+		    	 oneStack.pop();	    	 
+		     }
 		
 	}
+		
+		if (!oneStack.empty())
+		{
+			System.out.println("Invalid sequence of parenthesis");
+		}
+		
+		readFile.close();
+		userInput.close();
 	
 }
 }
