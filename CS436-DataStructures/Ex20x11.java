@@ -4,37 +4,43 @@ import java.io.*;
 public class Ex20x11 {
 
 	public static void main(String args[]) throws FileNotFoundException {
+			
 		
-		File test = new File("testt.txt");
-		Scanner help = new Scanner(test);
-		LinkedList inOrder = new LinkedList<>();
+		String userStorage;
+		Scanner userInput = new Scanner(System.in);
+		userStorage = userInput.next();
 		
 		
-		while(help.hasNext()){
+		File userFile = new File(userStorage);		
+		Scanner readFile = new Scanner(userFile);
+		Stack<Character> oneStack = new Stack<>();
+		
+		String s = null;
+		
+		while(readFile.hasNext()){
 		
 			
-			
-				String[] convertArray = help.nextLine().split(" ");
-				for ( int i = 0; i < convertArray.length; i++ )
-				{
-					if (convertArray[i].length() > 0 && 
-							 Character.isLetter(convertArray[i].charAt(0))) {
+			s.(readFile.next());
 						
-						inOrder.add(convertArray[i]);
-						
-						}
-					
-				}
-			
-			
 		}
 		
-		Collections.sort(inOrder);
+		StringTokenizer tokens = new StringTokenizer(s, "[](){}", true);
 		
-		help.close();
+		while (tokens.hasMoreTokens()) {
+		     String token = tokens.nextToken().trim();
+		     if (token.length() == 0) {
+		              continue;
+		     }
+		     else if (token.charAt(0) == '[') {
+		    	 
+		     }
+		    
 		
-		System.out.println(inOrder);
+		
+		userInput.close();
+	
 		
 	}
 	
+}
 }
